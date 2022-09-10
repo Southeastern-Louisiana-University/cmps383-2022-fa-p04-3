@@ -1,5 +1,5 @@
 ﻿using FA22.P04.Web.Features.ItemListings;
-
+using FA22.P04.Web.Features.Users;
 namespace FA22.P04.Web.Features.Listings;
 
 public class Listing
@@ -17,4 +17,6 @@ public class Listing
     public DateTimeOffset EndUtc { get; set; }
 
     public virtual ICollection<ItemListing> ItemsForSale { get; set; } = new List<ItemListing>();
+    //Owner: User
+    public User Owner { get; set; }
 }
