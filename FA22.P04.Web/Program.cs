@@ -1,6 +1,6 @@
 using FA22.P04.Web.Data;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Identity;
 var builder = WebApplication.CreateBuilder(args);
 
 // sets up our database connection
@@ -32,6 +32,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
 
 // maps the URLs on controllers to the methods on those classes
 app.MapControllers();
