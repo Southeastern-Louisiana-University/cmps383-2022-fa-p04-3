@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-
+using FA22.P04.Web.Features.UserRoles;
+using FA22.P04.Web.Features.Users;
+using FA22.P04.Web.Features.Roles;
 namespace FA22.P04.Web.Data;
 
 public class DataContext : DbContext
@@ -14,9 +16,21 @@ public class DataContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        base.OnModelCreating(modelBuilder);
-
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(DataContext).Assembly);
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<UserRole>()
+     .HasKey(bc => new { bc.UserId, bc.RoleId });
+        modelBuilder.Entity<UserRole>()
+            .HasOne(bc => bc.User)
+            .WithMany(b => b.UserRoles)
+            .HasForeignKey(bc => bc.UserId)
+            .OnDelete(DeleteBehavior.NoAction);
+        modelBuilder.Entity<UserRole>()
+            .HasOne(bc => bc.Role)
+            .WithMany()
+            .HasForeignKey(bc => bc.RoleId)
+            .OnDelete(DeleteBehavior.NoAction);
+
     }
 
     protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
