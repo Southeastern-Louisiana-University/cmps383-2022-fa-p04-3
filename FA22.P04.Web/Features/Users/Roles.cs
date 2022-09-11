@@ -5,5 +5,7 @@ namespace FA22.P04.Web.Features.Roles;
 
 public class Role
 {
-    public ICollection<UserRole> Users { get; set; }
+    // public ICollection<UserRole> Users { get; set; }
+    public int Id { get; set; }
+    public ICollection<UserRole> UserRoles { get; set; }
 }

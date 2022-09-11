@@ -18,5 +18,6 @@ public class Listing
 
     public virtual ICollection<ItemListing> ItemsForSale { get; set; } = new List<ItemListing>();
     //Owner: User
+    public virtual ICollection<Listing> Listings { get; set; } = new List<Listing>();
     public User Owner { get; set; }
 }
