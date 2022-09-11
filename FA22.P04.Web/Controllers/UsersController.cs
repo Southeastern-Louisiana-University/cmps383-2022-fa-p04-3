@@ -19,13 +19,10 @@ public class UsersController : ControllerBase
 
     }
     [HttpGet]
-    [Route("/users/{id}")]
-    public ActionResult<List<UserDto>> GetProductUsers(int id)
+    [Route("/users/")]
+    public ActionResult<List<UserDto>> GetUsers()
     {
-        if (!users.Any(x => x.Id == id))
-        {
-            return NotFound();
-        }
+
 
 
 
