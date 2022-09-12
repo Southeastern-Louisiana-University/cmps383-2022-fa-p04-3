@@ -1,8 +1,11 @@
-namespace FA22.P04.Web.Features.Login;
+using FA22.P04.Web.Features.UserRoles;
+namespace FA22.P04.Web.Features;
 
-public class LoginDto
+public class UserDto
 {
     public int Id { get; set; }
     public string? UserName { get; set; }
-    public string[]? Roles { get; set; }
+    public ICollection<UserRole> UserRoles { get; set; }
+
+    public string Password { get; set; }
 }
