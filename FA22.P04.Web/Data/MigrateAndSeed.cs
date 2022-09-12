@@ -50,22 +50,23 @@ public static class MigrateAndSeed
 
         users.Add(new User
         {
-            UserNameString = "galkadi",
-            PasswordString = "Password123!"
+            UserName = "galkadi",
+            Password = "Password123!",
+            // UserRoles = 
 
 
         });
         users.Add(new User
         {
-            UserNameString = "Bob",
-            PasswordString = "Password123!"
+            UserName = "Bob",
+            Password = "Password123!"
 
 
         });
         users.Add(new User
         {
-            UserNameString = "Sue",
-            PasswordString = "Password123!"
+            UserName = "Sue",
+            Password = "Password123!"
 
 
         });
