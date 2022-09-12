@@ -2,9 +2,12 @@
 using FA22.P04.Web.Features.UserRoles;
 using FA22.P04.Web.Features.Users;
 using FA22.P04.Web.Features.Roles;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 namespace FA22.P04.Web.Data;
 
-public class DataContext : DbContext
+public class DataContext : IdentityDbContext<User, Role, int, IdentityUserClaim<int>, UserRole,
+IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
 {
     public DataContext(DbContextOptions<DataContext> options) : base(options)
     {

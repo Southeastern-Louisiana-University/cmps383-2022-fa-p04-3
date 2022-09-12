@@ -1,12 +1,13 @@
 
 using FA22.P04.Web.Features.UserRoles;
+using Microsoft.AspNetCore.Identity;
 namespace FA22.P04.Web.Features.Users;
 
-public class User
+public class User : IdentityUser<int>
 {
-    public int Id { get; set; }
-    // public ICollection<UserRole> Roles { get; set; }
     public ICollection<UserRole> UserRoles { get; set; }
-    public string PasswordString { get; set; }
-    public string UserNameString { get; set; }
+    public string Password { get; set; }
+    public string UserName { get; set; }
+
+    public string Role { get; set; }
 }
