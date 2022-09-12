@@ -10,6 +10,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
+using FA22.P04.Web.Features.CreateUser;
+using FA22.P04.Web.Features.Products;
+
 namespace FA22.P04.Web.Controllers;
 
 [Route("/api/user")]
@@ -58,6 +61,32 @@ public class AuthenticationController : ControllerBase
         }
         return BadRequest();
     }
+
+    [HttpPost]
+    [Route("/api/Identity/Account/Create")]
+    public async Task<IActionResult> OnPost(CreateUserDto input, string returnUrl = null)
+    {
+        returnUrl = returnUrl ?? Url.Content("~/");
+
+        var existant = GetUserDtos(users.Where(x => x.UserName == input.UserName)).FirstOrDefault();
+        if (existant == null)
+        {
+            var user = new User
+            {
+                UserName = input.UserName,
+                Password = input.Password,
+                Role = "User"
+                
+            };
+            users.Add(user);
+
+            dataContext.SaveChanges();
+     
+            return Created("Created ", input.UserName);
+        }
+        return BadRequest("User Already Exists");
+    }
+
 
     private static IQueryable<UserDto> GetUserDtos(IQueryable<User> users)
     {
