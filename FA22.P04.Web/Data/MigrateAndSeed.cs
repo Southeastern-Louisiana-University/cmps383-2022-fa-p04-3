@@ -53,22 +53,21 @@ public static class MigrateAndSeed
             UserName = "galkadi",
             Password = "Password123!",
             // UserRoles = 
-            Role = "Admin"
 
 
         });
         users.Add(new User
         {
             UserName = "Bob",
-            Password = "Password123!",
-            Role = "User"
+            Password = "Password123!"
+
 
         });
         users.Add(new User
         {
             UserName = "Sue",
-            Password = "Password123!",
-            Role = "User"
+            Password = "Password123!"
+
 
         });
 
