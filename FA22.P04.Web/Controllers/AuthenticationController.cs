@@ -60,7 +60,17 @@ public class AuthenticationController : ControllerBase
             }
         }
         return BadRequest();
+        
+        
     }
+
+    //Logout
+    //[HttpPost]
+    //[Route"/api/Identity/Account/Logout"]
+
+    //Me
+    //[HttpGet]
+    //[Route"/api/Identity/Account/Me"]
     private static IQueryable<UserDto> GetUserDtos(IQueryable<User> users)
     {
         return users
