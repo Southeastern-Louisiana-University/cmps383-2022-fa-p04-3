@@ -10,6 +10,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
+using FA22.P04.Web.Features.CreateUser;
+using System.Linq;
+
 namespace FA22.P04.Web.Controllers;
 
 [Route("/api/user")]
@@ -58,7 +61,6 @@ public class AuthenticationController : ControllerBase
         }
         return BadRequest();
     }
-
     private static IQueryable<UserDto> GetUserDtos(IQueryable<User> users)
     {
         return users
@@ -69,5 +71,4 @@ public class AuthenticationController : ControllerBase
                 UserRoles = x.UserRoles
             });
     }
-
 }

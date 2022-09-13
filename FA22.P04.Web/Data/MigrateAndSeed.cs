@@ -52,6 +52,7 @@ public static class MigrateAndSeed
         {
             UserName = "galkadi",
             Password = "Password123!",
+            Role = "Admin"
             // UserRoles = 
 
 
@@ -59,14 +60,16 @@ public static class MigrateAndSeed
         users.Add(new User
         {
             UserName = "Bob",
-            Password = "Password123!"
+            Password = "Password123!",
+            Role = "User"
 
 
         });
         users.Add(new User
         {
             UserName = "Sue",
-            Password = "Password123!"
+            Password = "Password123!",
+            Role = "User"
 
 
         });
