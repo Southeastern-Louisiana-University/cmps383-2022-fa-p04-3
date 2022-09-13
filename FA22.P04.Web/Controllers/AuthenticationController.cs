@@ -24,10 +24,11 @@ public class AuthenticationController : ControllerBase
     private readonly DataContext dataContext;
     private readonly SignInManager<IdentityUser> _signInManager;
     private readonly ILogger<AuthenticationController> _logger;
-    public AuthenticationController(DataContext dataContext)
+    public AuthenticationController(DataContext dataContext, SignInManager<IdentityUser> signInManager)
     {
         this.dataContext = dataContext;
         users = dataContext.Set<User>();
+        _signInManager = signInManager;
 
     }
 
@@ -35,7 +36,7 @@ public class AuthenticationController : ControllerBase
     //login
     [HttpPost]
     [Route("/api/Identity/Account/Login")]
-    public async Task<IActionResult> OnPostAsync(LoginDto Input, string returnUrl = null)
+    public async Task<IActionResult> OnPostAsync(LoginDto Input, string? returnUrl = null)
     {
         returnUrl = returnUrl ?? Url.Content("~/");
 
@@ -70,7 +71,7 @@ public class AuthenticationController : ControllerBase
 
     //Me
     //[HttpGet]
-    //[Route"/api/Identity/Account/Me"]
+    //[Route"/api/Identity/Account/Me "]
     private static IQueryable<UserDto> GetUserDtos(IQueryable<User> users)
     {
         return users
