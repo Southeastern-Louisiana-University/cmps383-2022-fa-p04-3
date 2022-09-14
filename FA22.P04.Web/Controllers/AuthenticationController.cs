@@ -18,17 +18,18 @@ namespace FA22.P04.Web.Controllers;
 [Route("/api/user")]
 [ApiController]
 
-public class AuthenticationController : ControllerBase
+public class AuthenticationController : Controller
 {
     private readonly DbSet<User> users;
     private readonly DataContext dataContext;
-    private readonly SignInManager<IdentityUser> _signInManager;
+    private readonly SignInManager<User> _signInManager;
     private readonly ILogger<AuthenticationController> _logger;
-    public AuthenticationController(DataContext dataContext, SignInManager<IdentityUser> signInManager)
+    public AuthenticationController(DataContext dataContext, SignInManager<User> signInManager)
     {
         this.dataContext = dataContext;
         users = dataContext.Set<User>();
         _signInManager = signInManager;
+
 
     }
 

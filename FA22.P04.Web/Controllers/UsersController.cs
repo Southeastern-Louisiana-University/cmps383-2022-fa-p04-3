@@ -11,7 +11,7 @@ namespace FA22.P04.Web.Controllers;
 [Route("/api/user")]
 [ApiController]
 
-public class UsersController : ControllerBase
+public class UsersController : Controller
 {
     private readonly DbSet<User> users;
     private readonly DataContext dataContext;

@@ -2,6 +2,10 @@ using FA22.P04.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using FluentAssertions.Common;
+using FA22.P04.Web.Features.Users;
+using FA22.P04.Web.Features.Roles;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // sets up our database connection
@@ -14,6 +18,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddIdentity<User, Role>()
+    .AddEntityFrameworkStores<DataContext>();
+
 builder.Services.Configure<IdentityOptions>(options =>
 {
     // Password settings.
@@ -33,16 +41,16 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.User.AllowedUserNameCharacters =
     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
     options.User.RequireUniqueEmail = false;
-
 });
+
 builder.Services.ConfigureApplicationCookie(options =>
 {
     // Cookie settings
     options.Cookie.HttpOnly = true;
     options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
 
-    options.LoginPath = "/api/Identity/Account/Login";
-    options.AccessDeniedPath = "/api/Identity/Account/AccessDenied";
+    options.LoginPath = "/Identity/Account/Login";
+    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
     options.SlidingExpiration = true;
 });
 
